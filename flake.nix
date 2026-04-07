@@ -41,7 +41,7 @@
           ];
 
           shellHook = ''
-            echo "🚀 OT Firmware Integrity System"
+            echo " OT Firmware Integrity System"
             echo "================================"
             echo ""
             echo "Environment Ready:"
@@ -49,11 +49,11 @@
             echo "  npm: $(npm --version)"
             echo "  Python: $(python3 --version | head -n1)"
             echo ""
-            echo "📦 Install Dependencies:"
+            echo " Install Dependencies:"
             echo "  npm install --legacy-peer-deps"
             echo "  cd web-ui && npm install --legacy-peer-deps && cd .."
             echo ""
-            echo "🚀 Start Development:"
+            echo " Start Development:"
             echo "  Terminal 1: npm run node"
             echo "  Terminal 2: npm run compile && npm run deploy && npm run backend"
             echo "  Terminal 3: cd web-ui && npm start"
