@@ -5,7 +5,7 @@ Blockchain-backed firmware publish/verify system for IoT/OT devices with:
 - Solidity smart contract registry
 - Node/Express backend API
 - React web UI
-- ESP32 client library and demo
+
 
 ## Architecture
 
