@@ -10,9 +10,10 @@ Blockchain-backed firmware publish/verify system for IoT/OT devices with:
 ## Architecture
 
 ```text
-Firmware Build -> SHA-256 Hash -> Backend API -> Blockchain
-                                                                                                                  |
-                                                                                                      ESP32 Verify / OTA
+Smart Contract ->	Solidity
+Backend API    ->	Node.js + Express
+Frontend	     ->  React
+Blockchain     ->  Local(Hardhat)/Sepolia
 ```
 
 ## Local Quick Start (non-Nix)
