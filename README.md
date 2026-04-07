@@ -43,7 +43,7 @@ Backend health:
 curl -s http://localhost:3001/api/health
 ```
 
-## Nix Setup (integrated guide)
+## Nix Setup 
 
 This repo includes `shell.nix` and `flake.nix` for reproducible dev shells.
 
@@ -55,15 +55,8 @@ npm install --legacy-peer-deps
 cd web-ui && npm install --legacy-peer-deps && cd ..
 ```
 
-### Option B: Flakes (nix develop)
-
-```bash
-nix develop
-npm install --legacy-peer-deps
-cd web-ui && npm install --legacy-peer-deps && cd ..
-```
-
-### Option C: direnv (auto-load)
+ 
+### Option B: direnv (auto-load)
 
 ```bash
 direnv allow
@@ -115,11 +108,7 @@ npm install --legacy-peer-deps
 ```bash
 lsof -ti:8545 | xargs kill -9
 ```
-
-- ESP transport error:
-      - Ensure `BACKEND_BASE_URL` uses current host IP/domain.
-      - If using hotspot/router, disable client/AP isolation.
-
+  
 ## License
 
 MIT (see `LICENSE`).
