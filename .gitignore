@@ -1,0 +1,21 @@
+node_modules/
+web-ui/node_modules/
+
+# Build / blockchain outputs
+artifacts/
+cache/
+*.log
+web-ui/build/
+
+# Local/private env
+.env
+.env.local
+.env.*.local
+
+# Local deployment state (optional, environment-specific)
+deployment-info.json
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
