@@ -11,7 +11,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const HOST = process.env.HOST || '0.0.0.0';
 const RPC_URL = process.env.RPC_URL || 'http://127.0.0.1:8545';
-const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
 
 // Middleware
 app.use(cors());
@@ -23,15 +22,22 @@ let provider;
 let contract;
 let contractAddress;
 
+function loadContractAddressFromDeploymentInfo() {
+  const deploymentInfoPath = path.join(__dirname, 'deployment-info.json');
+  const deploymentInfo = JSON.parse(fs.readFileSync(deploymentInfoPath, 'utf8'));
+  const address = String(deploymentInfo.contractAddress || '').trim();
+
+  if (!address) {
+    throw new Error(`No contractAddress found in ${deploymentInfoPath}`);
+  }
+
+  return address;
+}
+
 // Load deployment info and initialize contract
 function initializeContract() {
   try {
-    if (CONTRACT_ADDRESS) {
-      contractAddress = CONTRACT_ADDRESS;
-    } else {
-      const deploymentInfo = JSON.parse(fs.readFileSync('./deployment-info.json', 'utf8'));
-      contractAddress = deploymentInfo.contractAddress;
-    }
+    contractAddress = loadContractAddressFromDeploymentInfo();
 
     // Connect to configured RPC node (local or hosted)
     provider = new ethers.JsonRpcProvider(RPC_URL);
@@ -44,7 +50,7 @@ function initializeContract() {
     console.log(`Using RPC URL: ${RPC_URL}`);
   } catch (error) {
     console.error('Failed to initialize contract:', error.message);
-    console.log('Set CONTRACT_ADDRESS and RPC_URL env vars for cloud deployment, or deploy locally with: npm run deploy');
+    console.log('Ensure deployment-info.json contains a valid contractAddress and set RPC_URL for the target network.');
   }
 }
 
